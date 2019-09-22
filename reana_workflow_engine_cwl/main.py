@@ -80,7 +80,7 @@ def main(workflow_uuid, workflow_spec, workflow_inputs,
     os.makedirs(tmpdir)
     os.makedirs(tmp_outdir)
     os.makedirs(docker_stagedir)
-    args = operational_options
+    args = list(operational_options) # default value for this in run_cwl_workflow is {}
 
     log.setLevel(REANA_LOG_LEVEL)
     if REANA_LOG_LEVEL == logging.DEBUG:
