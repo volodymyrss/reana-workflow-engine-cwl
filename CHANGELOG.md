@@ -1,5 +1,85 @@
 # Changelog
 
+## [0.95.0](https://github.com/volodymyrss/reana-workflow-engine-cwl/compare/v0.9.4...0.95.0) (2025-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **python:** drop support for Python 3.6 and 3.7
+
+### Build
+
+* **docker:** install correct extras of reana-commons submodule ([#261](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/261)) ([21957fe](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/21957fe41921d9c557067b2773205af6385f755b))
+* **docker:** non-editable submodules in "latest" mode ([#255](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/255)) ([a6acc88](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/a6acc888a36694e3306993cfc3108752b60bd1f3))
+* **docker:** pin setuptools 70 ([#287](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/287)) ([3c2cd8a](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/3c2cd8a474d167574bf8746b6430f4ae13a83e61))
+* **docker:** pin setuptools to v70 ([#284](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/284)) ([6dc9f26](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/6dc9f269f613d8bf925a94cef01b908c4a07ad7c))
+* **docker:** upgrade to Ubuntu 24.04 and Python 3.12 ([#283](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/283)) ([82ac6a9](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/82ac6a912fc86c8f2a3de7702e886e470dfe87ab))
+* **python:** add minimal `pyproject.toml` ([#284](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/284)) ([8523d8a](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/8523d8aa50e79475fc041ee311e1bbf583d02a4f))
+* **python:** bump all required packages as of 2024-03-04 ([#267](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/267)) ([ed6a846](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/ed6a846eb1d8a0bf92f77906749b5853e5794114))
+* **python:** bump shared REANA packages as of 2024-03-04 ([#267](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/267)) ([47155ef](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/47155ef95c4eb19642dd54a732402b2551973658))
+* **python:** bump shared REANA packages as of 2024-11-28 ([#289](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/289)) ([f9d3688](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/f9d3688858e6f1ff52fa58fecd9ce233dd97b0e1))
+* **python:** drop support for Python 3.6 and 3.7 ([#275](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/275)) ([db5508d](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/db5508d4d094dbbd86f19676ef37d9a03eb5f078))
+* **python:** remove deprecated `pytest-runner` ([#284](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/284)) ([bcf5785](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/bcf5785318fab66d05842bebde59d027f9eb6590))
+* **python:** use optional deps instead of `tests_require` ([#284](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/284)) ([7b44979](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/7b44979ea70f87dcbcfcba2370b8885074451fea))
+
+
+### Features
+
+* **task:** allow Compute4PUNCH backend options ([#277](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/277)) ([9b2a3d0](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/9b2a3d0872329e79d0b2d9a0972b0c09f08ff694))
+
+
+### Bug fixes
+
+* **progress:** handle stopped jobs ([#260](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/260)) ([bc36cb7](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/bc36cb7813a20fde685a40694af0732ded483d3a))
+
+
+### Code refactoring
+
+* **docs:** move from reST to Markdown ([#263](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/263)) ([3cf272f](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/3cf272f657cc3e0b329c6d159f5e476f06000f93))
+
+
+### Continuous integration
+
+* **actions:** update GitHub actions due to Node 16 deprecation ([#271](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/271)) ([6c04bb8](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/6c04bb81f1624ba72e667aa11318feb1f58e8fa4))
+* add hadolint and flake8 linters ([624c6d9](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/624c6d98536f3af0bf9578d92d4f05f818e95093))
+* added github actions workflow ([937e93f](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/937e93fa32cf3ab213042dc8a2ed9ff49ae2f55d))
+* **commitlint:** addition of commit message linter ([#256](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/256)) ([021854e](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/021854e309999938cf01c31bda5ab095679e03b0))
+* **commitlint:** allow release commit style ([#268](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/268)) ([ed7ad11](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/ed7ad114ccf09ab3182b4cdd49265761f44cd37b))
+* **commitlint:** check for the presence of concrete PR number ([#262](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/262)) ([9a45817](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/9a45817075f98e04405845f0d49cbcd86ee95556))
+* **commitlint:** improve checking of merge commits ([#285](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/285)) ([9fe826b](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/9fe826b0fa42f33d3498e97713f2fe1183cf5fe4))
+* pin hadolint version ([5fbd117](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/5fbd117d05c69a12f41fec619de1b6e86a62b255))
+* publish docker image after new release ([7c6c8ed](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/7c6c8ed298a076e067cc48cdb298bca84d03884c))
+* **pytest:** invoke `pytest` directly instead of `setup.py test` ([#284](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/284)) ([9e42a81](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/9e42a81bd774143b859a1be28959cd936db5a64b))
+* **release-please:** initial configuration ([#256](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/256)) ([bcd87d1](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/bcd87d1bbaa4c9b589e4025989ff880594af2b3d))
+* **release-please:** update version in Dockerfile ([#259](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/259)) ([0961257](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/096125709172e6bea1510a9fd2fdcb90299fac8b))
+* remove older versions from python tests ([1d0df00](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/1d0df000ebab0c5900de1348d034429da6fb630b))
+* **shellcheck:** fix exit code propagation ([#262](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/262)) ([6568b9b](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/6568b9b229141dd8dd2a261a833057358143590f))
+* update all actions ([d5a36c8](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/d5a36c8aad6c9d59061ca10d9c2a959267993f8a))
+
+
+### Documentation
+
+* add .readthedocs.yaml to migrate to RTD v2 ([824abdf](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/824abdf4312f9c693fa670c4adb250da865262a9))
+* add overview & local execution instructions ([dd2c8c9](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/dd2c8c9405cc5b1aac594e19f3068194e622e8ba))
+* added conformance badges to the readme ([e19f294](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/e19f2944e2acd49a0acf0233a162e7386723196c))
+* author ORCID links ([74faf33](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/74faf33b4495feece1ace12b2a45a65db823b196))
+* **authors:** complete list of contributors ([#266](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/266)) ([2960cd9](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/2960cd9c06a8e12283822ec9fbf87aba7b9b9fb5))
+* better structure ([0a03c87](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/0a03c87821557c7dd43c6e5476319560dbf3c14e))
+* **conformance-tests:** update CWL conformance test badges ([#264](https://github.com/volodymyrss/reana-workflow-engine-cwl/issues/264)) ([45afa2e](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/45afa2efd984fd84bbae48fde6ca663f70dd86dc))
+* fixes docstrings for __init__ methods ([5aca7e8](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/5aca7e876bb81e10359a86134751a415ccdfd002))
+* new logo, panel verbiage and links ([e3eaa1e](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/e3eaa1e8f4d56c53cb70bb563531cb87336db5b0))
+* removes outdated dev docs & unused conf vars ([d376629](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/d37662929112563d153806635475c3d13ac6b18f))
+* set default language to English ([a1a1dae](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/a1a1daef03dfa7fb088b612ae6ee1ce015d28005))
+* single-page RTFD outline ([c420b27](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/c420b27107baf33ad4a424c18faf6c0dfc376042))
+* update changelog ([7919fc1](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/7919fc1714200a9ca3b4c20c73fd2d596838704a))
+* update CWL conformance tests instructions ([fd8ce89](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/fd8ce89ad0dd369977687f9f498e992c474d5d33))
+* update information about conformance testing ([6baa2e2](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/6baa2e275e25f6c4d66fde0727f55a5b3be86a3f))
+
+
+### Chores
+
+* **master:** release 0.95.0-alpha.1 ([f528ba3](https://github.com/volodymyrss/reana-workflow-engine-cwl/commit/f528ba357273d14d459b3b35722e71deb22ee9c2))
+
 ## [0.9.4](https://github.com/reanahub/reana-workflow-engine-cwl/compare/0.9.3...0.9.4) (2024-11-29)
 
 
