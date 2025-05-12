@@ -1,34 +1,23 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of REANA.
-# Copyright (C) 2017, 2018 CERN.
+# Copyright (C) 2018, 2019, 2020, 2021 CERN.
 #
 # REANA is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""REANA Workflow Controller flask configuration."""
+"""REANA Workflow Engine CWL configuration."""
 
+from distutils.util import strtobool
 import os
 
-JOBCONTROLLER_HOST = os.getenv('JOB_CONTROLLER_HOST',
-                               'job-controller.default.svc.cluster.local')
-
-SHARED_VOLUME_PATH = os.getenv('SHARED_VOLUME_PATH', '/var/reana')
+SHARED_VOLUME_PATH = os.getenv("SHARED_VOLUME_PATH", "/var/reana")
 """Path to the mounted REANA shared volume."""
 
-BROKER_URL = os.getenv('RABBIT_MQ_URL',
-                       'message-broker.default.svc.cluster.local')
+MOUNT_CVMFS = os.getenv("REANA_MOUNT_CVMFS", "false")
 
-BROKER_PORT = os.getenv('RABBIT_MQ_PORT', 5672)
-
-BROKER_USER = os.getenv('RABBIT_MQ_USER', 'test')
-
-BROKER_PASS = os.getenv('RABBIT_MQ_PASS', '1234')
-
-BROKER = os.getenv('RABBIT_MQ',
-                   f'amqp://{BROKER_USER}:{BROKER_PASS}@{BROKER_URL}//')
-
-MOUNT_CVMFS = os.getenv('REANA_MOUNT_CVMFS', 'false')
-
-LOGGING_MODULE = 'reana-workflow-engine-cwl'
+LOGGING_MODULE = "reana-workflow-engine-cwl"
 """REANA Workflow Engine CWL logging module."""
+
+WORKFLOW_KERBEROS = bool(strtobool(os.getenv("REANA_WORKFLOW_KERBEROS", "false")))
+"""Whether Kerberos is needed for the whole workflow."""

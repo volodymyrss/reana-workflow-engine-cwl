@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of REANA.
-# Copyright (C) 2017, 2018 CERN.
+# Copyright (C) 2018, 2019, 2020, 2021 CERN.
 
 # REANA is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""REANA Workflow Engine CWL polling thread."""
+"""REANA Workflow Engine CWL's RJC jobs status polling class."""
 
 
 from __future__ import absolute_import, print_function, unicode_literals
@@ -18,11 +18,11 @@ class PollThread(threading.Thread):
     """Polling thread class."""
 
     def __init__(self, operation, poll_interval=5, poll_retries=10):
-        """Constructor."""
+        """Instanciate poll thread."""
         super(PollThread, self).__init__()
         self.daemon = True
         self.operation = operation
-        self.id = operation['job_id']
+        self.id = operation["job_id"]
         self.poll_interval = poll_interval
         self.poll_retries = poll_retries
 

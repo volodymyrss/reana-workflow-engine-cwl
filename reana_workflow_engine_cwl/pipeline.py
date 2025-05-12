@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of REANA.
-# Copyright (C) 2017, 2018 CERN.
+# Copyright (C) 2018, 2019, 2020, 2021 CERN.
 #
 # REANA is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""REANA Workflow Engine CWL pipeline."""
+"""REANA Workflow Engine CWL ``cwltool`` overriden classes."""
 
 from __future__ import absolute_import, print_function, unicode_literals
 
+import json
 import logging
 import os
 import tempfile
@@ -29,10 +30,10 @@ class Pipeline(object):
     """Pipeline class."""
 
     def __init__(self):
-        """Constructor."""
+        """Instanciate pipeline."""
         self.threads = []
 
-    def executor(self, tool, job_order, runtimeContext, **kwargs):
+    def executor(self, tool, job_order, runtimeContext, **kwargs):  # noqa: C901
         """Executor method."""
         final_output = []
         final_status = []
@@ -42,8 +43,7 @@ class Pipeline(object):
             final_output.append(out)
 
         if not runtimeContext.basedir:
-            raise WorkflowException('`runtimeContext` should contain a '
-                                    '`basedir`')
+            raise WorkflowException("`runtimeContext` should contain a " "`basedir`")
 
         output_dirs = set()
 
@@ -64,21 +64,23 @@ class Pipeline(object):
         jobReqs = None
         if "cwl:requirements" in job_order:
             jobReqs = job_order["cwl:requirements"]
-        elif ("cwl:defaults" in tool.metadata and
-              "cwl:requirements" in tool.metadata["cwl:defaults"]):
+        elif (
+            "cwl:defaults" in tool.metadata
+            and "cwl:requirements" in tool.metadata["cwl:defaults"]
+        ):
             jobReqs = tool.metadata["cwl:defaults"]["cwl:requirements"]
         if jobReqs:
             for req in jobReqs:
                 tool.requirements.append(req)
 
         if not runtimeContext.default_container:
-            runtimeContext.default_container = 'frolvlad/alpine-bash'
-        runtimeContext.docker_outdir = os.path.join(
-            runtimeContext.working_dir, "cwl/docker_outdir")
-        runtimeContext.docker_tmpdir = os.path.join(
-            runtimeContext.working_dir, "cwl/docker_tmpdir")
+            runtimeContext.default_container = "frolvlad/alpine-bash"
+        runtimeContext.tmpdir = runtimeContext.get_tmpdir()
         runtimeContext.docker_stagedir = os.path.join(
-            runtimeContext.working_dir, "cwl/docker_stagedir")
+            runtimeContext.working_dir, "cwl/docker_stagedir"
+        )
+        runtimeContext.docker_outdir = runtimeContext.outdir
+        runtimeContext.docker_tmpdir = runtimeContext.tmpdir
 
         jobs = tool.job(job_order, output_callback, runtimeContext)
         try:
@@ -108,14 +110,19 @@ class Pipeline(object):
 
         if final_output and final_output[0] and finaloutdir:
             final_output[0] = relocateOutputs(
-                final_output[0], finaloutdir,
-                output_dirs, runtimeContext.move_outputs,
-                runtimeContext.make_fs_access(""))
+                final_output[0],
+                finaloutdir,
+                output_dirs,
+                runtimeContext.move_outputs,
+                runtimeContext.make_fs_access(""),
+            )
 
         if runtimeContext.rm_tmpdir:
             cleanIntermediate(output_dirs)
 
         if final_output and final_status:
+            output = json.dumps(final_output[0])
+            log.info(f"FinalOutput{output}FinalOutput")
             return str(final_output[0]), str(final_status[0])
         else:
             return None, "permanentFail"
